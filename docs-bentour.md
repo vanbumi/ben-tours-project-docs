@@ -476,3 +476,51 @@ Commit Github : https://github.com/vanbumi/bentours-app/commit/9ae785454f03cb07e
 
 Heroku Live : https://bentours.herokuapp.com/api/v1/tours
 
+
+
+### Single Request dengan ID
+
+
+
+Melakukan GET Request berdasarkan ID Tour
+
+```javascript
+// GET REQUEST DENGAN ID
+app.get('/api/v1/tours/:id', (req, res) => {
+
+    // Merubah ID dari string ke number
+    const id = req.params.id * 1
+
+    // Bila ada request yang melebihi jumlah tours
+    if (id > tours.length) {
+        return res.status(404).json({
+            status: 'fail',
+            message: 'Invalid ID'
+        })
+    }
+
+    // Query ke data collections
+    const tour = tours.find(el => el.id === id)
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            tour
+        }
+    })
+})
+```
+
+Test di POSTMAN
+
+GET localhost:3000/api/v1/tours/1
+
+Hasilnya : success 200
+
+![postman-5](images/postman-5.png)
+
+Selesai
+
+Github Commit : https://github.com/vanbumi/bentours-app/commit/e4a476ca160252b7a9511db151f7b1e988c50ff9
+
+Heroku Live : https://bentours.herokuapp.com/api/v1/tours/1
