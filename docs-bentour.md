@@ -352,3 +352,127 @@ Test :
 
 Commit Github : https://github.com/vanbumi/bentours-app/commits/main
 
+
+
+### POST REQUEST
+
+
+
+**Update File app.js**
+
+Menambahkan middleware :
+
+```
+app.use(express.json())
+```
+
+Tambah request post dibawah request get sebelumnya 
+
+```
+app.post('/api/v1/tours', (req, res) => {
+	console.log(req.body)
+	res.send('Done')
+})
+```
+
+Kemudia Test di POSTMAN
+
+**Cara Menyimpan Request di POSTMAN**
+
+/> Klik Collections 
+
+/> Klik New Collections
+
+/> Isi nama Collection : BenTours 
+
+/> Klik Save button (ada di sebelah Send button).
+
+/> Berinama (Request name) : Get All Tours
+
+ /> Pilih Folder di bagian bawah : BenTours
+
+Sekarang kita punya kumpulan request per project.
+
+
+
+**Membuat Request POST**
+
+Klik tanda + untuk membuat request baru di Tab yang baru.
+
+GET POST localhost:3000/api/v1/tours
+
+Simpan request post dengan perintah seperti diatas.
+
+Berinama : Create New Tour
+
+Save
+
+Klik Tab Body
+
+raw
+
+JSON(application/json)
+
+Tambahkan datanya dengan :
+
+```
+{
+	"name": "Penang",
+    "duration": 5,
+    "maxGroupSize": 10,
+    "difficulty": "easy",
+}
+```
+
+Klik Send!
+
+Bila berhasil tanpa error maka hasilnya pada Response kolom --> "Done" 
+
+dan lihat di console Terminal. 
+
+
+
+**Langkah berikutnya**
+
+Mengganti console.log dengan request simpan agar bisa di simpan di data.
+
+```javascript
+app.post('/api/v1/tours', (req, res) => {
+	
+	// menambakan ID
+  const newId = tours[tours.length -1].id + 1;
+  const newTour = Object.assign({id: newId}, req.body);
+
+  tours.push(newTour);
+  
+  fs.writeFile(
+    `${__dirname}/dev-data/data/tours-simple.json`,
+    JSON.stringify(tours),
+    err => {
+      res.status(201).json({
+        status: 'success',
+        data: {
+          tour: newTour
+        }
+      })
+    }
+  )
+}  
+```
+
+Test lagi di POSTMAN dengan data sebelumnya.
+
+![postman-3](images/postman-3.png)
+
+success 201
+
+Bila kamu GET request lagi di Tab "Get All Tours" maka Tour diatas sudah ditambahkan di paling bawah :
+
+![postman-4](images/postman-4.png)
+
+Selesai
+
+Commit Github : https://github.com/vanbumi/bentours-app/commit/9ae785454f03cb07e97ca6b09e36a82d62e82bdc
+
+Heroku Live : https://bentours.herokuapp.com/api/v1/tours
+
