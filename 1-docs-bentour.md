@@ -6,13 +6,7 @@
 
 #### Persiapan
 
-Setup Express JS - https://expressjs.com/
-
 Setup Postman - https://www.postman.com/
-
-
-
-#### Setup ExpressJS
 
 Download project starter disini : https://drive.google.com/drive/folders/1qoj5g1ZJUb4OkL4Pej6UPey_uFm_dUJH?usp=sharing
 
