@@ -539,3 +539,34 @@ Contoh :
 
 ### Patch Request
 
+Tambahkan kode request Patch di bawah request Post :
+
+```javascript
+// PATCH REQUEST
+app.patch('/api/v1/tours/:id', (req, res) => {
+  if (req.params.id * 1 > tours.length) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID'
+    })
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour: '<Updated tour here....>'
+    }
+  })
+})
+```
+
+Coba di POSTMAN
+
+![postman-6](images/postman-6.png)
+
+Percobaan diatas hanya meng-update "duration" menjadi 15. 
+
+Commit github : https://github.com/vanbumi/bentours-app/commit/d9a065124a422be883d8fbaadb32d1e8180df910
+
+
+
