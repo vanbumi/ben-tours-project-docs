@@ -524,3 +524,24 @@ Selesai
 Github Commit : https://github.com/vanbumi/bentours-app/commit/e4a476ca160252b7a9511db151f7b1e988c50ff9
 
 Heroku Live : https://bentours.herokuapp.com/api/v1/tours/1
+
+
+
+> **CATATAN** mulai sekarang bekerja development menggunakan git branch development, supaya branch main/master tetap aman dari error pada saat kita mengerjakan koding berikutnya dan berikutnya, dan jangan lupa untuk melakukan git commit setiap melewati tahapan pekerjaan, misalnya dari development satu ke development bagian yang lain.
+
+
+
+Contoh :
+
+![contoh-branch](images/branch1.png)
+
+3 Branch 
+
+1. Branch dev : branch untuk melakukan development sehari-hari.
+2. Branch main : branch Master, jika branch dev tidak ada bugs / error kemudian di merge ke branch main.
+3. Branch  main_bkup: adalah branch Orisinal sebagai backup saja.
+
+
+
+### Patch Request
+
