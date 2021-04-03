@@ -127,7 +127,7 @@ Kllik tombol "New Project"
 
 Berinama sesuai dengan project kamu.
 
-Contoh beri nama : bentour-app
+Contoh beri nama : bentour
 
 Klik "Next"
 
@@ -136,6 +136,8 @@ Klik "Create Project"
 Setelah Project dibuat kemudia saat nya membuat "Cluster".
 
 Klik "Build a Cluster"
+
+Pilih Shared Clusters -> FREE, klik Create a cluster.
 
 Lanjut Pilih Free Cluster, **M0 Sanbox**  (kecuali jika client mau bayar). 
 
@@ -158,6 +160,8 @@ Klik "Add Your Current IP Address"
 Create Mongodb User
 
 username dan password
+
+bensmania, zelin123
 
 Klik "Create Mongodb User"
 
@@ -206,7 +210,7 @@ Beri nama Database: misalnya "bentour".
 
 Collection Name: tours
 
-Lanjut
+Klik CREATE DATABASE
 
 Klik database bentour
 

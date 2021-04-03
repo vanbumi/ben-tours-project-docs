@@ -745,3 +745,141 @@ Kamu bisa liat semua Refactor kode di Commit Repository nya disini : https://git
 
 Selesai bab Refactor, lanjut ke bab berikutnya.
 
+
+
+### Users Routes
+
+Kita ulangi lagi membuat Routes tapi untu Users, sbb :
+
+```javascript
+// Users Routes
+app
+  .route('/api/v1/users')
+  .get(getAllUsers)
+  .post(createUser)
+  
+app
+  .route('/api/v1/users/:id')
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser)
+```
+
+Dan Kemudian juga membuat Request nya sbb :
+
+```javascript
+// Users Request
+const getAllUsers = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not defined yet!'
+  })
+}
+
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not defined yet!'
+  })
+}
+
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not defined yet!'
+  })
+}
+
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not defined yet!'
+  })
+}
+
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not defined yet!'
+  })
+}
+```
+
+Request user diatas response nya belum kita define kita buat dulu seperti message diatas untuk di test di POSTMAN.
+
+```
+res.status(500).json({
+  status: 'error',
+  message: 'This route is not defined yet!'
+})
+```
+
+Test di POSMANT
+
+![postman-9](images/postman-9.png)
+
+
+
+Oya jangan lupa install morgan :
+
+```
+npm install morgan
+```
+
+morgan adalah **Middleware** HTTP request logger untuk Node.js. Gunanya untuk menyederhanakan process of logging requests di aplikasi kamu langsung di Terminal console. Contoh:
+
+![morgan1](images/morgan1.png)
+
+
+
+Lanjut ke bab berikutnya
+
+Bentour Repo: https://github.com/vanbumi/bentours-app
+
+Github Commit : https://github.com/vanbumi/bentours-app/commit/d9a065124a422be883d8fbaadb32d1e8180df910
+
+
+
+### Mounting Multiple Routers
+
+Kita akan sederhanakan lagi kode nya dengan menggunakan Routers, menjadi seperti ini:
+
+```javascript
+// Menggunakan Middleware Router
+const tourRouter = express.Router()
+const userRouter = express.Router()
+
+tourRouter
+  .route('/')
+  .get(getAllTours)
+  .post(createTour)
+
+tourRouter
+  .route('/:id')
+  .get(getTour)
+  .patch(updateTour)
+  .delete(deleteTour)
+
+// Users Routes
+userRouter
+  .route('/')
+  .get(getAllUsers)
+  .post(createUser)
+  
+userRouter
+  .route('/:id')
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser)
+
+// Tempatkan middleware dibawah agar terekskusi setelah Router di deklarasikan.
+app.use('/api/v1/tours', tourRouter)
+app.use('/api/v1/users', userRouter)
+```
+
+Jangan lupa test di POSTMAN, untuk memastikan tidak ada error.
+
+Commit github : https://github.com/vanbumi/bentours-app/commit/30b64ad380260a6b47601582f0d03bfb0adb54c9
+
+next vid 17. A Better File Structure
+
